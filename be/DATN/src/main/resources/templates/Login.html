@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link rel="stylesheet" href="static/css/style.css">-->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Login</title>
+</head>
+<body>
+
+        <div class="contain">
+            <div class="login">
+                <div class="wrapper">
+                    <h2>WELCOME</h2>
+
+                    <form th:action="@{/api/auth/login}" method="post" th:object="${account}">
+                        <div class="validate form-group sub-wrapper">
+                            <input type="email" class="input heightt" placeholder="Email"
+                                th:field = "*{email}"
+                            >
+                            <div class="invalid-feedback">
+                                <span class="invalid">Invalid email</span>
+                            </div>
+                        </div>
+
+                        <div class="sub-wrapper">
+                            <input type="password" placeholder="Password" class="input heightt"
+                                   th:field = "*{password}"
+                            >
+                            <div class="invalid-feedback">
+                                <span class="invalid" >Password must be at least 6 characters</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-login heightt common">Login</button>
+
+                        <div class="social">
+                            <div><a href="#facebook" class="facebook">Facebook</a></div>
+                            <div><a href="#google" class="google">Google</a></div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<div class="breadcrumb">
+  <div class="container">
+    <a class="breadcrumb-item" href="/">Trang chủ</a>
+    <a class="breadcrumb-item" href="my-account">Tài khoản</a>
+    <span class="breadcrumb-item active">Thông tin tài khoản</span>
+  </div>
+</div>
+<section class="static about-sec">
+  <div class="container">
+    <h1>Thông tin cá nhân</h1>
+    <form [formGroup]="profileForm" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="firstName">Tên</label>
+            <input id="firstName" type="text" formControlName="firstName" class="form-control" required/>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="lastName">Họ và tên đệm</label>
+            <input id="lastName" type="text" formControlName="lastName" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="birthday">Ngày sinh</label>
+            <input id="birthday" type="datetime-local" formControlName="birthday" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="gender">Giới tính</label>
+            <select id="gender" formControlName="gender" class="form-control">
+              <option value="true">Nữ</option>
+              <option value="false">Nam</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label for="phone">Số điện thoại</label>
+          <input id="phone" type="tel" formControlName="phone" class="form-control" />
+        </div>
+        <div class="d-flex flex-row col-md-12">
+          <button type="submit" [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Lưu
+          </button>
+          <a [routerLink]="['']" class="btn btn-secondary">Thoát</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

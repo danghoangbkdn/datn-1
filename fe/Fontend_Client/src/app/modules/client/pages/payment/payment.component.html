@@ -1,0 +1,78 @@
+<section class="product-sec">
+  <div class="container">
+    <div class="row">
+      <div class="cart-product col-md-8">
+        <div class="cart-header">
+          <label class="mb-0">KIỂM TRA LẠI ĐƠN HÀNG</label>
+        </div>
+        <div class="cart-list">
+          <div *ngFor="let item of cartOrder">
+            <div class="cart-item">
+              <div class="cart-item-left">
+                <img class="cart-product-img" src="{{item.productCover}}">
+                <div class="content">
+                  <a id="item-title" href="">
+                    {{item.productName}}
+                  </a>
+                  <a id="item-short-descrip" href="">{{item.productDescription.substring(0, 30)}}...</a>
+                </div>
+              </div>
+              <div class="cart-item-middle">
+                <label>Đơn giá:</label>
+                <span class="ml-2 mb-3">{{item.price | number:'3.0-5'}} vnđ</span>
+                <label>Số lượng:</label>
+                <span class=" ml-3">{{item.quantity}}</span>
+              </div>
+              <div class="cart-item-right">
+                <label>Thành tiền:</label>
+                <p class="total-item-price mb-1">{{item.price * item.quantity | number:'3.0-5'}} vnđ</p>
+              </div>
+            </div>
+            <hr width="100%" align="center" />
+          </div>
+        </div>
+      </div>
+      <div class="bill-product col-md-4">
+        <div class="title-bill">
+          <label class="mb-0">Thông Tin Đơn Hàng</label>
+        </div>
+        <div class="detail-bill">
+          <div class="info-bill name">
+            <i class="fa fa-map-marker-alt"></i>
+            <span class="name-bill">{{order.username || ''}}</span>
+            <a class="edit-a" href="">Chỉnh sửa</a>
+          </div>
+          <div class="info-bill address">
+            <span class="address-tag-label">NHÀ RIÊNG</span>
+            <label>{{order.address}}</label>
+          </div>
+          <div class="info-bill phone">
+            <i class="fa fa-phone-alt"></i>
+            <span>{{order.phone}}</span>
+            <a class="edit-a" href="">Chỉnh sửa</a>
+          </div>
+          <!-- <div class="info-bill email">
+            <i class="fa fa-envelope"></i>
+            <span>mydieu.mdu@gmail.com</span>
+          </div> -->
+          <div class="info-bill temp-charge">
+            <p id="temp-charge-title">Tổng giá trị đơn hàng</p>
+            <p id="temp-charge-price"><strong>{{order.totalCharges | number:'3.0-5'}} vnđ</strong></p>
+          </div>
+          <div class="promotion-form">
+            <input id="promotion-input" type="text" placeholder="Mã giảm giá (chỉ áp dụng 1 mã)" />
+            <button id="promotion-btn" type="button" class="">ÁP DỤNG</button>
+          </div>
+          <hr width="100%" align="center" />
+          <div class="total-charge">
+            <p id="charge-title">Tổng cộng</p>
+            <p id="charge-price">{{order.totalCharges | number:'3.0-5'}} vnđ</p>
+          </div>
+          <div class="payment">
+            <button class="pay-btn" (click)="payment()">THANH TOÁN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

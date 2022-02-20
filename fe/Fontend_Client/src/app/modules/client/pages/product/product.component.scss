@@ -1,0 +1,104 @@
+ul {
+  list-style: none;
+}
+
+ul li a .active {
+  opacity: 0.7;
+}
+
+.product-quantity {
+  font-family: inherit;
+  color: #646464;
+  width: 180px;
+}
+
+.product-quantity .clm {
+  width: 5px;
+}
+
+.quantity-input {
+  border: 1px solid #646464;
+  height: 40px;
+  width: 60px;
+  font-size: 20px;
+  border-right: none;
+  border-left: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btn-minus,
+.btn-plus {
+  border: 1px solid #646464;
+  color: #646464;
+  height: 40px;
+  width: 50px;
+  font-size: 26px;
+  background-color: white;
+}
+
+.btn-minus {
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.btn-plus {
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+}
+
+.detail-infor-product {
+  font-family: inherit;
+  width: 180px !important;
+}
+
+.value-infor-product {
+  font-family: inherit;
+}
+
+.card-question {
+  display: block;
+}
+
+.qna-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  height: 25px;
+}
+
+.input-question-product {
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 4px;
+  float: left;
+  height: 40px;
+  width: 860px;
+  padding: 0 10px;
+}
+
+.btn-question-product {
+  padding: 0;
+  border-radius: 4px;
+  float: right;
+  font-size: 13px;
+  width: 154px;
+  height: 40px;
+  text-align: center;
+}
+
+.qna-list {
+  display: inherit;
+  padding-top: 30px;
+  color: #646464;
+}

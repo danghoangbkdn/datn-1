@@ -1,0 +1,45 @@
+<div class="breadcrumb d-flex">
+  <div class="container">
+    <a class="breadcrumb-item d-inline" href="/">Trang chủ</a>
+    <a class="breadcrumb-item d-inline" href="my-account">Tài khoản</a>
+    <span class="breadcrumb-item d-inline active">Sổ địa chỉ</span>
+  </div>
+</div>
+<section class="static about-sec">
+  <div class="container">
+    <h1 class="d-inline-block">Danh sách địa chỉ</h1>
+    <a class="btn btn--primary float-right" href="my-account/addresses/0/edit">Thêm địa chỉ</a>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Phường / Xã</th>
+          <th scope="col">Quận / Huyện</th>
+          <th scope="col">Tỉnh / Thành Phố</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let address of userAddresses">
+          <td>{{ address.streetNumber + " " + address.streetName }}</td>
+          <td>{{ address.ward }}</td>
+          <td>{{ address.district }}</td>
+          <td>{{ address.province }}</td>
+          <td>
+            <span *ngIf="address.defaultAddress" class="badge badge-pill badge-primary">Mặc định</span
+            >
+          </td>
+          <td>
+            <a class="btn btn-warning" href="/my-account/addresses/{{address.addressId}}/edit">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <button class="btn btn-danger ml-2" (click)="delete(address.addressId)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

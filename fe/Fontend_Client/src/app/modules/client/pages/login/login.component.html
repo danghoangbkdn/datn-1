@@ -1,0 +1,59 @@
+<div class="breadcrumb">
+  <div class="container">
+    <a class="breadcrumb-item" href="">Trang chủ</a>
+    <span class="breadcrumb-item active">Đăng nhập</span>
+  </div>
+</div>
+<section class="static about-sec">
+  <div class="container">
+    <h1>Đăng nhập</h1>
+    <p>Đăng nhập để mua ngay những món hàng trong giỏ của bạn!</p>
+    <div class="form">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="email">Email<span class="required-star"> *</span></label>
+              <input id="email" type="email" formControlName="email" class="form-control" placeholder="Nhập email" required>
+              <div *ngIf="f.email.invalid && (f.email.errors.dirty || f.email.errors.touched)" class="alert alert-danger">
+                <div *ngIf="f.email.errors.required">
+                  Yêu cầu nhập email.
+                </div>
+                <div *ngIf="f.email.errors.pattern">
+                  Không đúng dạng email.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="lastname">Mật khẩu<span class="required-star"> *</span></label>
+              <input type="password" formControlName="password" class="form-control" placeholder="Nhập mật khẩu" required>
+              <div *ngIf="f.password.invalid && (f.password.errors.dirty || f.password.errors.touched)" class="alert alert-danger">
+                <div *ngIf="f.password.errors.required">
+                  Yêu cầu nhập mật khẩu
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex flex-column col-md-5">
+            <button type="submit" [disabled]="loading" class="btn btn--primary">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Đăng nhập
+            </button>
+            <br>
+            <button type="button" class="btn btn--secondary">
+              <i class="fa fa-google-plus mr-2"></i>
+              Đăng nhập với Google
+            </button>
+            <h5>Chưa có tài khoản? <a [routerLink]="['/register']" routerLinkActive="router-link-active">Đăng kí ngay</a></h5>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

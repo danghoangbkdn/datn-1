@@ -1,0 +1,69 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Edit Profile</h4>
+                        <p class="card-category">Complete your profile</p>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="updateProfile" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Admin Travelog" disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 form-group">
+                                    <label>Username</label>
+                                    <mat-form-field class="example-full-width">
+                                        <input type="text" formControlName="username" class="form-control" matInput placeholder="">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-7 form-group">
+                                    <label>Password</label>
+                                    <mat-form-field class="example-full-width">
+                                        <input formControlName="password" class="form-control" matInput placeholder="" type="password">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label>About Me</label>
+                                    <mat-form-field class="example-full-width">
+                                        <textarea type="text" formControlName="detail" class="form-control" matInput placeholder=""></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button class="btn btn-danger pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div> -->
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a href="javascript:void(0)">
+              <img class="img" src="./assets/img/faces/admin.jpg" />
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">Admin / Co-Founder</h6>
+            <h4 class="card-title">{{username}}</h4>
+            <p class="card-description">
+              {{detail}}
+            </p>
+            <h6 class="contact text-gray">Contact me: </h6>
+            <p class="card-description">
+              {{email}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

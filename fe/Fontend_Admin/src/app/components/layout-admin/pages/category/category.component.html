@@ -1,0 +1,67 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row mb-2" id="category-detail">
+      <div class="col-sm-6">
+        <div class="form-cate">
+          <div class="form-group">
+            <label>Tên danh mục</label>
+            <h5>{{category.name === undefined? "": category.name}}</h5>
+          </div>
+          <div class="form-group">
+            <label>Danh mục con</label>
+            <select class="form-control input-cate">
+              <option *ngFor="let cate of childCaterory">{{cate.name}}</option>
+            </select>
+          </div>
+          <label>Hiện có {{childCaterory === undefined ? 0:childCaterory.length}} danh mục con</label>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-cate">
+          <form [formGroup]="categoryForm" (ngSubmit)="save()">
+            <div class="form-group">
+              <input class="form-control input-cate" formControlName="id" hidden>
+              <label>Tên danh mục</label>
+              <input class="form-control input-cate" formControlName="name" placeholder="Nhập tên danh mục">
+            </div>
+            <div class="form-group">
+              <label>Danh mục cha</label>
+              <select class="form-control input-cate" formControlName="parentCategoryId">
+                <option value=0>Không có</option>
+                <option *ngFor="let cate of rootCaterory" value="{{cate.id}}">{{cate.name}}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success" type="button" (click)="addNew()">Thêm danh mục</button>
+    <p class="mt-3 mb-1">Danh sách có {{rootCaterory === undefined ? 0 : rootCaterory.length}} danh mục chính trong tổng số {{categories === undefined ? 0 : categories.length}} danh mục.</p>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Danh mục</th>
+          <th scope="col">Danh mục cha</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody class="table-body">
+        <tr *ngFor="let category of categories">
+          <th scope="row">{{category.id}}</th>
+          <td>{{category.name}}</td>
+          <td>{{category.parentCategoryName}}</td>
+          <td>
+            <button class="btn btn-outline-info" (click)="getCategory(category.id, category)">
+              <a class="detail-btn" href="http://localhost:4200/categories#category-detail">
+                <i class="fa fa-eye mr-1"></i>Chi tiết</a>
+            </button>
+            <button type="button" class="btn btn-outline-danger ml-2" (click)="delete(category.id, category)"><i class="fa fa-trash mr-1"></i>
+              Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

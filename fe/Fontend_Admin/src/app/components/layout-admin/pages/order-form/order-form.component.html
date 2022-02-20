@@ -1,0 +1,75 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <h2>THÔNG TIN ĐƠN HÀNG</h2>
+    <div class="row">
+      <form [formGroup]="" (ngSubmit)="save()"></form>
+      <div class="col-md-8">
+        <div class="order-product">
+          <div class="header-package">
+            <h3 class="title-package">Thông tin khách hàng</h3>
+          </div>
+          <div class="user-info">
+            <label class="mr-4">Người mua: </label><span>{{order?.username}}</span>
+            <br>
+            <label class="mr-4">Số điện thoại: </label><span>{{order?.phone}}</span>
+            <br>
+            <label class="mr-4">Địa chỉ: </label><span>{{order?.address}}</span>
+            <br>
+            <label class="mr-4">Ngày đặt hàng: </label><span>{{order?.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</span>
+            <br>
+            <label class="mr-4">Mã giảm giá áp dụng: </label>
+            <span *ngFor="let promotion of order?.promotions">promotion, </span>
+            <br>
+            <label class="mr-4">Tổng giá trị đơn hàng: </label><span>{{order?.totalCharges | number:'3.0-5'}} vnđ</span>
+          </div>
+        </div>
+        <div class="order-product">
+          <div class="header-package">
+            <h3 class="title-package">Kiện hàng</h3>
+          </div>
+          <table class="table-package">
+            <tr *ngFor="let item of order?.orderProducts">
+              <td style="width: 20%">
+                <img class="order-img" src="{{item.cover}}">
+              </td>
+              <td class="td-product" style="width: 40%">{{item.product}}</td>
+              <td style="width: 15%">{{item.price | number:'3.0-5'}} vnđ</td>
+              <td style="width: 10%">x {{item.quantity}}</td>
+              <td style="width: 15%"><strong>{{item.price * item.quantity}} vnđ</strong></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="order-product">
+          <div class="header-form">
+            <h3 class="title-form">Quản lý đơn hàng</h3>
+          </div>
+          <div class="form-order">
+            <form [formGroup]="orderForm" (ngSubmit)="save()">
+              <div class="form-group">
+                <label>Trạng thái đơn hàng</label>
+                <select class="custom-select form-control-custom" formControlName="status">
+                  <option *ngFor="let st of statusOrder" value="{{st.value}}">{{st.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Phí giao hàng</label>
+                <input type="text" class="form-control-custom" formControlName="shippingFee" placeholder="15.000">
+              </div>
+              <div class="form-group">
+                <label>Nhân viên giao hàng</label>
+                <input type="text" class="form-control-custom" formControlName="deliver" placeholder="Nhập tên nhân viên giao hàng">
+              </div>
+              <div class="form-group">
+                <label>Thời gian giao hàng</label>
+                <input type="datetime-local" formControlName="deliveryDate" class="form-control-custom">
+              </div>
+              <button class="btn btn-primary" type="submit">Lưu</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

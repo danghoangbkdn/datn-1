@@ -1,0 +1,37 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="table-product">
+      <table class="table table-bordered order-table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" style="width:30px">Id</th>
+            <th scope="col" style="width:70px">Trạng thái</th>
+            <th scope="col" style="width:150px">Địa chỉ</th>
+            <th scope="col" style="width:70px">Giá trị đơn</th>
+            <th scope="col" style="width:100px">Ngày đặt hàng</th>
+            <th scope="col" style="width:100px">Người giao</th>
+            <th scope="col" style="width:80px">Phí giao hàng</th>
+            <th scope="col" style="width:130px">Ngày giao hàng</th>
+            <th scope="col" style="width:70px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{order.id}}</th>
+            <td style="text-align:center"><span class="status-label">{{order.status}}</span></td>
+            <td>{{order.address}}</td>
+            <td style="text-align:center">{{order.totalCharges}}</td>
+            <td style="text-align:center">{{order.orderDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
+            <td>{{order.deliver}}</td>
+            <td style="text-align:center">{{order.shippingFee}}</td>
+            <td style="text-align:center">{{order.deliveryDate | date: 'dd/MM/yyyy hh:mm a'}}</td>
+            <td>
+              <button class="btn btn-outline-info" [routerLink]="['/orders/update', order.id]"><i class="fa fa-eye"></i></button>
+              <!-- <button type="button" class="btn btn-outline-danger ml-2 mr-0" (click)="deleteOrder(order.id, order)"><i class="fa fa-trash"></i></button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

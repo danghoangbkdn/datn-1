@@ -1,0 +1,80 @@
+<div class="breadcrumb d-flex">
+  <div class="container">
+    <a class="breadcrumb-item d-inline" href="/">Trang chủ</a>
+    <a class="breadcrumb-item d-inline" href="my-account">Tài khoản</a>
+    <a class="breadcrumb-item d-inline" href="my-account/orders">Đơn hàng của tôi</a>
+    <span class="breadcrumb-item d-inline active">Chi tiết đơn hàng</span>
+  </div>
+</div>
+<section class="product-sec">
+  <div class="container">
+    <div class="row">
+      <div class="cart-product col-md-8">
+        <div class="cart-header">
+          <label class="mb-0">KIỆN HÀNG</label>
+        </div>
+        <div class="cart-list">
+          <div *ngFor="let item of order.orderProducts">
+            <div class="cart-item">
+              <div class="cart-item-left">
+                <img class="cart-product-img" src="{{item.cover}}">
+                <div class="content">
+                  <a id="item-title" href="">
+                    {{item.product}}
+                  </a>
+                  <a id="item-short-descrip" href="">{{item.description.substring(0, 30)}}...</a>
+                </div>
+              </div>
+              <div class="cart-item-middle">
+                <label>Đơn giá:</label>
+                <span class="ml-2 mb-3">{{item.price | number:'3.0-5'}} vnđ</span>
+                <label>Số lượng:</label>
+                <span class=" ml-3">{{item.quantity}}</span>
+              </div>
+              <div class="cart-item-right">
+                <label>Thành tiền:</label>
+                <p class="total-item-price mb-1">{{item.price * item.quantity | number:'3.0-5'}} vnđ</p>
+              </div>
+            </div>
+            <hr width="100%" align="center" />
+          </div>
+        </div>
+      </div>
+      <div class="bill-product col-md-4">
+        <div class="title-bill">
+          <label class="mb-0">Thông Tin Đơn Hàng</label>
+        </div>
+        <div class="detail-bill">
+          <div class="info-bill name">
+            <i class="fa fa-map-marker-alt"></i>
+            <span class="name-bill">{{order.username || ''}}</span>
+          </div>
+          <div class="info-bill address">
+            <span class="address-tag-label">NHÀ RIÊNG</span>
+            <label>{{order.address}}</label>
+          </div>
+          <div class="info-bill phone">
+            <i class="fa fa-phone-alt"></i>
+            <span>{{order.phone}}</span>
+          </div>
+          <div class="info-bill temp-charge">
+            <p id="temp-charge-title">Trạng thái đơn hàng</p>
+            <p id="temp-charge-price">{{order.status}}</p>
+          </div>
+          <div class="info-bill temp-charge">
+            <p id="temp-charge-title">Tổng giá trị đơn hàng</p>
+            <p id="temp-charge-price"><strong>{{order.totalCharges | number:'3.0-5'}} vnđ</strong></p>
+          </div>
+          <hr width="100%" align="center" />
+          <div class="total-charge">
+            <p id="charge-title">Tổng cộng</p>
+            <p id="charge-price">{{order.totalCharges | number:'3.0-5'}} vnđ</p>
+          </div>
+          <div class="payment">
+            <button class="pay-btn" (click)="cancelOrder()" [disabled]="order.status !== processingState" [ngClass]="order.status !== processingState? 'disabled' : 'enabled'">HỦY ĐƠN HÀNG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

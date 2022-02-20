@@ -1,0 +1,69 @@
+<style>
+    .btn-just-icon {
+        border-width: 0px !important;
+    }
+</style>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons" style="font-size: 50px">person</i>
+                        </div>
+                        <p class="card-category">Total Users register in one month</p>
+                        <h3 class="card-title">{{totalUser}}
+                            <small>users</small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> Just Updated
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons" style="font-size: 50px">content_paste</i>
+                        </div>
+                        <p class="card-category">Total Posts in one month</p>
+                        <h3 class="card-title">{{totalPost}}
+                            <small>posts</small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> Just Updated
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header card-header-success">
+                        <div class="ct-chart" id="dailySalesChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">New Users Register in Lastest Month</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header card-header-warning">
+                        <div class="ct-chart" id="websiteViewsChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">New Posts in Lastest Month</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

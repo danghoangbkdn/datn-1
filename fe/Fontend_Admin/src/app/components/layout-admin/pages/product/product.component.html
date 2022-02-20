@@ -1,0 +1,57 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="search-filter">
+      <form [formGroup]="searchForm">
+        <div class="form-group">
+          <input type="text" class="form-control-custom search-product" formControlName="name" placeholder="Tìm kiếm ...">
+        </div>
+        <div class="form-group filter">
+          <select class="custom-select select-cate" formControlName="category" placeholder="Danh mục ..">
+              <option value="">Tất cả</option>
+              <option *ngFor="let cate of categories" value="{{cate.id}}">{{cate.name}}</option>
+            </select>
+          <button type="button" class="btn btn-info mt-0"><i class="fa fa-search mr-1" aria-hidden="true"></i>Tìm kiếm</button>
+        </div>
+      </form>
+    </div>
+    <div class="table-product">
+      <button class="btn btn-success mb-2" type="button" (click)="createProduct()">Thêm sản phẩm</button>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" style="width:30px">Id</th>
+            <th scope="col" style="width:300px">Sản phẩm</th>
+            <th scope="col" style="width:150px">Nhà cung cấp</th>
+            <th scope="col" style="width:200px">Mô tả</th>
+            <th scope="col" style="width:70px">Giá gốc</th>
+            <th scope="col" style="width:130px">Danh mục</th>
+            <th scope="col" style="width:120px">Mã giảm giá</th>
+            <th scope="col" style="width:130px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th scope="row">{{product.id}}</th>
+            <td>
+              <img class="image-table" src="{{product.image.split(',')[0]}}"> {{product.name.length
+              < 30 ? product.name : product.name.substring(0, 30) + '...'}} </td>
+                <td>{{product.supplier}}</td>
+                <td>{{product.description.length
+                  < 30 ? product.description : product.description.substring(0, 30) + '...'}}</td>
+                    <td style="text-align: center">{{product.originPrice}}</td>
+                    <td>
+                      <span class="" *ngFor="let proCate of product.categories">{{proCate.name}}, </span>
+                    </td>
+                    <td>
+                      <span class="" *ngFor="let proPromotion of product.promotions">{{proPromotion.code}}, </span>
+                    </td>
+                    <td>
+                      <button class="btn btn-outline-info" (click)="updateProduct(product.id)"><i class="fa fa-eye"></i></button>
+                      <button type="button" class="btn btn-outline-danger ml-2 mr-0"><i class="fa fa-trash"></i></button>
+                    </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

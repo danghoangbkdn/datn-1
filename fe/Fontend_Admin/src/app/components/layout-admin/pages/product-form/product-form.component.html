@@ -1,0 +1,55 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <alert></alert>
+    <div>
+      <form [formGroup]="productForm" (ngSubmit)="save()">
+        <div class="form-group">
+          <input type="text" class="form-control-custom" formControlName="id" hidden>
+          <label>Tên sản phẩm</label>
+          <input type="text" class="form-control-custom" formControlName="name" placeholder="nhập tên sản phẩm">
+        </div>
+        <div class="form-group">
+          <label>Nhà cung cấp</label>
+          <input type="text" class="form-control-custom" formControlName="supplier" placeholder="nhà cung cấp">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Danh mục sản phẩm</label>
+            <mat-select class="custom-select" formControlName="categories" multiple>
+              <mat-option *ngFor="let cate of allCategories" [value]="cate.id">{{cate.name}}</mat-option>
+            </mat-select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Mã khuyến mãi</label>
+            <input type="text" class="form-control-custom" formControlName="promotions">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Giá gốc sản phẩm</label>
+            <input type="number" class="form-control-custom" formControlName="originPrice" placeholder="giá sản phẩm">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Số lượng sản phẩm</label>
+            <input type="number" class="form-control-custom" formControlName="quantity" placeholder="0" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mô tả sản phẩm</label>
+          <textarea class="form-control-custom" rows="3" formControlName="description" placeholder="Tên sản phẩm, tác giả, nhà sản xuất, mô tả ngắn..."></textarea>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" (change)="uploadFile($event)" id="customFile">
+          <label class="custom-file-label" for="customFile">Chọn hình ảnh cho sản phẩm..</label>
+        </div>
+        <div *ngIf="product.image">
+          <img class="img-product-form" *ngFor="let image of product.image.split(',')" src="{{image}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+      </form>
+    </div>
+    <div *ngIf="id > 0">
+      <app-entity [id]="id"></app-entity>
+    </div>
+  </div>
+</div>

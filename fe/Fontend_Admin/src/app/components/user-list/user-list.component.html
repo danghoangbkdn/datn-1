@@ -1,0 +1,271 @@
+<style>
+    .btn-just-icon {
+        border-width: 0px !important;
+    }
+</style>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- __________________________________ 4 Lastest User Register _____________________ -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4 class="card-title ">Latest Registered Users</h4>
+                                <p class="card-category"> Here is 4 latest registed users</p>
+                            </div>
+                            <button class="btn btn-warning" (click)="showLastestUser = !showLastestUser">Show</button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf="showLastestUser">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Username
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Active
+                                    </th>
+                                    <th>
+                                        Detail
+                                    </th>
+                                    <th>
+                                        Create at
+                                    </th>
+                                    <th>
+                                        Update at
+                                    </th>
+                                    <th>
+                                        Followed
+                                    </th>
+                                </thead>
+                                <tbody *ngFor="let user of lastestUsers">
+                                    <tr>
+                                        <td>
+                                            {{user.id}}
+                                        </td>
+                                        <td>
+                                            {{user.username}}
+                                        </td>
+                                        <td>
+                                            {{user.email}}
+                                        </td>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input id="activeCheckbox" class="form-check-input" type="checkbox" value="" checked (change)="onChange(user.id, user.username, $event)">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{user.detail}}
+                                        </td>
+                                        <td>
+                                            {{user.created | date : 'short'}}
+                                        </td>
+                                        <td>
+                                            {{user.updated | date : 'short'}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{user.n_followers}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- __________________________________ All Active user  ____________________________ -->
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4 class="card-title mt-0">Active User List</h4>
+                                <p class="card-category"> Here is list user is active</p>
+                            </div>
+                            <button class="btn btn-warning" (click)="showActiveUser = !showActiveUser">Show</button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf="showActiveUser">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Username
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Active
+                                    </th>
+                                    <th>
+                                        Detail
+                                    </th>
+                                    <th>
+                                        Create at
+                                    </th>
+                                    <th>
+                                        Update at
+                                    </th>
+                                    <th>
+                                        Followed
+                                    </th>
+                                </thead>
+                                <tbody *ngFor="let user of users">
+                                    <tr>
+                                        <td>
+                                            {{user.id}}
+                                        </td>
+                                        <td>
+                                            {{user.username}}
+                                        </td>
+                                        <td>
+                                            {{user.email}}
+                                        </td>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input id="activeCheckbox" class="form-check-input" type="checkbox" value="" checked (change)="onChange(user.id, user.username, $event)">
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{user.detail}}
+                                        </td>
+                                        <td>
+                                            {{user.created | date : 'short'}}
+                                        </td>
+                                        <td>
+                                            {{user.updated | date : 'short'}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{user.n_followers}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination" style="width: max-content; margin: auto;">
+                                <li class="page-item {{currentPage===startPage? 'disabled':''}}"><a class="page-link" (click)="getStartPage()">Start</a></li>
+                                <li class="page-item {{currentPage===startPage? 'disabled':''}}">
+                                    <a class="page-link" (click)="getPrePage()">
+                                        << Pre</a>
+                                </li>
+                                <li class="page-item"><a class="page-link">...</a></li>
+                                <li class="page-item active"><a class="page-link">{{currentPage}}</a></li>
+                                <li class="page-item"><a class="page-link">...</a></li>
+                                <li class="page-item {{currentPage===endPage? 'disabled':''}}"><a class="page-link" (click)="getNextPage()">Next >></a></li>
+                                <li class="page-item {{currentPage===endPage? 'disabled':''}}"><a class="page-link" (click)="getEndPage()">End</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- __________________________________ All Disabled user  ____________________________ -->
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4 class="card-title mt-0">Disabled User List</h4>
+                                <p class="card-category"> Here is list user is disabled</p>
+                            </div>
+                            <button class="btn btn-warning" (click)="showDisabledUser = !showDisabledUser">Show</button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf="showDisabledUser">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Username
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Active
+                                    </th>
+                                    <th>
+                                        Detail
+                                    </th>
+                                    <th>
+                                        Create at
+                                    </th>
+                                    <th>
+                                        Update at
+                                    </th>
+                                    <th>
+                                        Followed
+                                    </th>
+                                </thead>
+                                <tbody *ngFor="let user of disabledUsers">
+                                    <tr>
+                                        <td>
+                                            {{user.id}}
+                                        </td>
+                                        <td>
+                                            {{user.username}}
+                                        </td>
+                                        <td>
+                                            {{user.email}}
+                                        </td>
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                  <input id="activeCheckbox" class="form-check-input" type="checkbox" value="{{user.id}}"
+                                                  (change)="onActive(user.id, user.username, $event)">
+                                                  <span class="form-check-sign">
+                                                      <span class="check"></span>
+                                                  </span>
+                                              </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{user.detail}}
+                                        </td>
+                                        <td>
+                                            {{user.created | date : 'short'}}
+                                        </td>
+                                        <td>
+                                            {{user.updated | date : 'short'}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{user.n_followers}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

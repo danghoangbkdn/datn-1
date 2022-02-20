@@ -1,0 +1,101 @@
+<section class="slider">
+  <div class="container">
+    <div class="item">
+      <div class="slide">
+        <img src="../../../../../assets/images/slide1.jpg" alt="slide1">
+        <div class="content">
+          <div class="title">
+            <h3><strong>Tiệm sách Spring</strong></h3>
+            <h4>Hãy khám phá tiệm sách qua website của chúng tôi</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="recomended-sec">
+  <div class="container">
+    <div class="title">
+      <h2>Sản phẩm đang được mua nhiều nhất</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6" *ngFor="let product of products">
+        <div class="item mb-4">
+          <img src="{{product.covers[0]}}" alt="img">
+          <h3>{{product.name}}</h3>
+          <h6><span class="price">{{product.originPrice}}vnđ</span> / <a href="" [routerLink]="['/cart']">Thêm vào giỏ</a></h6>
+          <div class="hover">
+            <a href="" [routerLink]="['/products', product.id]">
+              <span><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about-sec">
+  <div class="about-img">
+    <figure style="background:url(../../../../../assets/images/about-img.jpg)no-repeat;"></figure>
+  </div>
+  <div class="about-content">
+    <h2>CHƯƠNG TRÌNH KHUYẾN MÃI</h2>
+    <p>Chào mừng tuần lễ Giáng sinh và Năm mới 2021:</p>
+    <p>+ Giảm thêm 10% khi nhập mã SPRING2021</p>
+    <p>Chương trình áp dụng đối với những đơn hàng phát sinh từ ngày 24/12/2020 đến hết ngày 01/01/2021.</p>
+    <div class="btn-sec">
+      <a href="http://localhost:4200/home#tat-ca-san-pham" class="btn btn-success">Khám phá</a>
+      <a href="" [routerLink]="['/cart']" class="btn btn-warning">Đến giỏ hàng</a>
+    </div>
+  </div>
+</section>
+<section class="recent-book-sec">
+  <div class="container">
+    <div class="title">
+      <h2 id="tat-ca-san-pham">Tất cả sản phẩm</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-lg-2 col-md-3 col-sm-4" *ngFor="let product of products">
+        <div class="item mb-3">
+          <a href="" [routerLink]="['/products', product.id]">
+            <img src="{{product.covers[0]}}" alt="img">
+            <h3>{{product.name}}</h3>
+          </a>
+          <h6><span class="price">{{product.originPrice}} vnđ</span> / <button class="btn-add-cart" (click)="addToCart(product)">Thêm vào giỏ</button></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offers-sec features-sec" style="background:url(../../../../../assets/images/offers.jpg)no-repeat;">
+  <div class="container">
+    <ul class="row">
+      <div class="col-md-6">
+        <li>
+          <span class="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+          <h3>MUA SẮM TIẾT KIỆM HƠN</h3>
+          <h5>Nhiều mã ưu đãi hơn</h5>
+          <h6>Theo dõi website của chúng tôi thường xuyên hơn để cập nhật nhanh nhất, mới nhất những chương trình khuyến mãi hấp dẫn.</h6>
+        </li>
+      </div>
+      <div class="col-md-6">
+        <li>
+          <span class="icon"><i class="fa fa-shipping-fast" aria-hidden="true"></i></span>
+          <h3>MUA SẮM TIỆN LỢI HƠN</h3>
+          <h5>Giao hàng tận nơi</h5>
+          <h6>Chúng tôi cung cấp dịch vụ giao hàng tận nơi, đặc biệt: miễn phí giao hàng trong phạm vi 5km và các đơn hàng có giá trị trên 100.000vnđ</h6>
+        </li>
+      </div>
+    </ul>
+  </div>
+</section>
+<section class="testimonial-sec">
+  <div class="left-quote">
+    <img src="../../../../../assets/images/left-quote.png" alt="quote">
+  </div>
+  <div class="right-quote">
+    <img src="../../../../../assets/images/right-quote.png" alt="quote">
+  </div>
+</section>

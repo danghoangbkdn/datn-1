@@ -1,0 +1,10 @@
+<div>
+  <h1 mat-dialog-title>Xác nhận</h1>
+  <div mat-dialog-content>
+    <p>{{message}}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button class="btn btn-info" mat-button [mat-dialog-close]="'OK'" cdkFocusInitial>Hủy đơn hàng</button>
+    <button class="btn btn-success ml-2" mat-button (click)="cancel()">Thoát</button>
+  </div>
+</div>
